@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.straw.faq.mapper.AnswerMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="answerCommentMap" type="cn.tedu.straw.commons.model.Answer">
+        <id column="id" property="id" />
+        <result column="content" property="content" />
+        <result column="like_count" property="likeCount" />
+        <result column="user_id" property="userId" />
+        <result column="user_nick_name" property="userNickName" />
+        <result column="quest_id" property="questId" />
+        <result column="accept_status" property="acceptStatus" />
+        <result column="createtime" property="createtime" />
+        <collection property="comments" ofType="cn.tedu.straw.commons.model.Comment">
+            <id column="comment_id" property="id" />
+            <result column="comment_user_id" property="userId" />
+            <result column="comment_user_nick_name" property="userNickName" />
+            <result column="comment_content" property="content" />
+            <result column="comment_answer_id" property="answerId" />
+            <result column="comment_createtime" property="createtime" />
+        </collection>
+    </resultMap>
+
+    <select id="findAnswerWithCommentByQuestionId" resultMap="answerCommentMap">
+        SELECT a.id,a.content,a.like_count,a.user_id,a.user_nick_name,a.quest_id,a.accept_status,a.createtime,
+               c.id             comment_id,
+               c.user_id        comment_user_id,
+               c.user_nick_name comment_user_nick_name,
+               c.content        comment_content,
+               c.answer_id      comment_answer_id,
+               c.createtime     comment_createtime
+        FROM answer a
+                 LEFT JOIN COMMENT c ON a.id=c.answer_id
+        WHERE a.quest_id=#{questionId}
+        ORDER BY a.createtime,c.createtime
+    </select>
+
+</mapper>

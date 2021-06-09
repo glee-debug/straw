@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueTest</title>
+    <script src="bower_components/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <p v-text="message">这是一个Vue演示</p>
+  <input type="text" v-model="desc">
+  <button v-on:click="hello">演示</button>
+</div>
+</body>
+<script>
+  let app=new Vue({
+    el:"#app",
+    data:{
+      message:"p标签内容",
+      desc:"123"
+    },
+    methods:{
+      hello:function(){
+        //要想使用data:{}里的vue变量必须使用this声明
+        this.desc+="0";
+        this.message=this.desc;
+      }
+    }
+  })
+</script>
+</html>

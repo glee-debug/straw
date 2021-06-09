@@ -1,0 +1,17 @@
+
+t
+java:S1488"]Immediately return this expression instead of assigning it to the temporary variable "count".(¯ë¸ß
+u
+java:S1149I"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(í…Ò‰
+j
+java:S32521"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(çø¤ÿÿÿÿÿ
+t
+java:S22939"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ò¯Òûÿÿÿÿ
+Q
+java:S1854m";Remove this useless assignment to local variable "masters".(º¶‘ö
+k
+java:S3252—"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(çø¤ÿÿÿÿÿ
+A
+java:S1481n",Remove this unused "teacher" local variable.(‡°Ë
+B
+java:S1481m",Remove this unused "masters" local variable.(º¶‘ö
